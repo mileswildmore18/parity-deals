@@ -4,7 +4,9 @@ import {ArrowRightIcon} from "lucide-react";
 import Link from "next/link";
 import {NeonIcon} from "@/app/(marketing)/_icons/Neon";
 import {ClerkIcon} from "@/app/(marketing)/_icons/Clerk";
-import { subscriptionTiersInOrder } from "@/data/subscriptionTiers";
+import {subscriptionTiersInOrder} from "@/data/subscriptionTiers";
+import {Card, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {formatCompactNumber} from "@/lib/formatters";
 
 export default function HomePage() {
     return (
@@ -32,39 +34,40 @@ export default function HomePage() {
             <section className="bg-primary text-primary-foreground">
                 <div className="container py-16 flex flex-col gap-16 px-8 md:px-16">
 
-                </div>
-                <h2 className="text-3xl text-center text-balance">Trusted by the top modern companies</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-16">
-                    <Link href="https://neon.tech">
-                        <NeonIcon/>
-                    </Link>
-                    <Link href="https://clerk.com">
-                        <ClerkIcon/>
-                    </Link>
-                    <Link href="https://neon.tech">
-                        <NeonIcon/>
-                    </Link>
-                    <Link href="https://neon.tech">
-                        <NeonIcon/>
-                    </Link>
-                    <Link href="https://neon.tech">
-                        <NeonIcon/>
-                    </Link>
-                    <Link href="https://neon.tech">
-                        <NeonIcon/>
-                    </Link>
-                    <Link href="https://neon.tech">
-                        <NeonIcon/>
-                    </Link>
-                    <Link href="https://neon.tech">
-                        <NeonIcon/>
-                    </Link>
-                    <Link href="https://neon.tech">
-                        <NeonIcon/>
-                    </Link>
-                    <Link className="md:max-xl:hidden" href="https://neon.tech">
-                        <NeonIcon/>
-                    </Link>
+
+                    <h2 className="text-3xl text-center text-balance">Trusted by the top modern companies</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-16">
+                        <Link href="https://neon.tech">
+                            <NeonIcon/>
+                        </Link>
+                        <Link href="https://clerk.com">
+                            <ClerkIcon/>
+                        </Link>
+                        <Link href="https://neon.tech">
+                            <NeonIcon/>
+                        </Link>
+                        <Link href="https://neon.tech">
+                            <NeonIcon/>
+                        </Link>
+                        <Link href="https://neon.tech">
+                            <NeonIcon/>
+                        </Link>
+                        <Link href="https://neon.tech">
+                            <NeonIcon/>
+                        </Link>
+                        <Link href="https://neon.tech">
+                            <NeonIcon/>
+                        </Link>
+                        <Link href="https://neon.tech">
+                            <NeonIcon/>
+                        </Link>
+                        <Link href="https://neon.tech">
+                            <NeonIcon/>
+                        </Link>
+                        <Link className="md:max-xl:hidden" href="https://neon.tech">
+                            <NeonIcon/>
+                        </Link>
+                    </div>
                 </div>
             </section>
             {/*End trusted by section*/}
@@ -85,6 +88,7 @@ export default function HomePage() {
     )
 }
 
+//  Cards for each subscription tier
 function PricingCard({
                          name,
                          priceInCents,
@@ -94,5 +98,17 @@ function PricingCard({
                          canCustomizeBanner,
                          canRemoveBranding
                      }: typeof subscriptionTiersInOrder[number]) {
-    return name
+    // Add cards for each subscription tier
+    return <Card>
+        <CardHeader>
+            <div className="text-accent font-semibold mb-8">
+                {name}
+            </div>
+            <CardTitle className="text-xl font-bold">${priceInCents / 100} /mo</CardTitle>
+            <CardDescription>
+                {formatCompactNumber(maxNumberOfVisits)} pricing page visits/mo
+            </CardDescription>
+
+        </CardHeader>
+    </Card>
 }
