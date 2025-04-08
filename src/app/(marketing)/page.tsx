@@ -46,26 +46,26 @@ export default function HomePage() {
                         <Link href="https://neon.tech">
                             <NeonIcon/>
                         </Link>
-                        <Link href="https://neon.tech">
-                            <NeonIcon/>
+                        <Link href="https://clerk.com">
+                            <ClerkIcon/>
                         </Link>
                         <Link href="https://neon.tech">
                             <NeonIcon/>
                         </Link>
-                        <Link href="https://neon.tech">
-                            <NeonIcon/>
+                        <Link href="https://clerk.com">
+                            <ClerkIcon/>
                         </Link>
                         <Link href="https://neon.tech">
                             <NeonIcon/>
                         </Link>
-                        <Link href="https://neon.tech">
-                            <NeonIcon/>
+                        <Link href="https://clerk.com">
+                            <ClerkIcon/>
                         </Link>
                         <Link href="https://neon.tech">
                             <NeonIcon/>
                         </Link>
-                        <Link className="md:max-xl:hidden" href="https://neon.tech">
-                            <NeonIcon/>
+                        <Link className="md:max-xl:hidden" href="https://clerk.com">
+                            <ClerkIcon/>
                         </Link>
                     </div>
                 </div>
