@@ -8,7 +8,7 @@ export const subscriptionTiers = {
         canAccessAnalytics: false,
         canCustomizeBanner: false,
         canRemoveBranding: false,
-        stripePriceId: undefined,
+        //stripePriceId: undefined,
     },
     Basic: {
         name: "Basic",
@@ -18,7 +18,6 @@ export const subscriptionTiers = {
         canAccessAnalytics: true,
         canCustomizeBanner: false,
         canRemoveBranding: true,
-        stripePriceId: env.BASIC_PLAN_STRIPE_PRICE_ID,
     },
     Standard: {
         name: "Standard",
@@ -28,7 +27,6 @@ export const subscriptionTiers = {
         canAccessAnalytics: true,
         canCustomizeBanner: true,
         canRemoveBranding: true,
-        stripePriceId: env.STANDARD_PLAN_STRIPE_PRICE_ID,
     },
     Premium: {
         name: "Premium",
@@ -38,6 +36,13 @@ export const subscriptionTiers = {
         canAccessAnalytics: true,
         canCustomizeBanner: true,
         canRemoveBranding: true,
-        stripePriceId: env.PREMIUM_PLAN_STRIPE_PRICE_ID,
     },
 } as const
+
+// Add the subscription tiers in order
+export const subscriptionTiersInOrder = [
+    subscriptionTiers.Free,
+    subscriptionTiers.Basic,
+    subscriptionTiers.Standard,
+    subscriptionTiers.Premium
+] as const
