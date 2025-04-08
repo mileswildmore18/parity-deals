@@ -66,8 +66,15 @@ export default function HomePage() {
             </div>
         </section>
         {/*End trusted by section*/}
-        <section id="pricing" className="">
-            Pricing
+
+        {/*Pricing section*/}
+        <section id="pricing" className="px-8 py-16 bg-accent/5">
+            <h2 className="text-4xl text-center text-balance font-semibold mb-8">
+            Pricing software which pays for itself 20x over
+            </h2>
+            <div className="grid grid-cols-2 lg:grid-col-4 gap-4 max-w-screen-xl mx-auto">
+
+            </div>
         </section>
     </>
 }
