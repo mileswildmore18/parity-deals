@@ -1,12 +1,14 @@
 import {SignUpButton} from "@clerk/nextjs";
 import {Button} from "@/components/ui/button";
-import {ArrowRightIcon} from "lucide-react";
+import {ArrowRightIcon, CheckIcon} from "lucide-react";
 import Link from "next/link";
 import {NeonIcon} from "@/app/(marketing)/_icons/Neon";
 import {ClerkIcon} from "@/app/(marketing)/_icons/Clerk";
 import {subscriptionTiersInOrder} from "@/data/subscriptionTiers";
-import {Card, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {formatCompactNumber} from "@/lib/formatters";
+import {ReactNode} from "react";
+import {cn} from "@/lib/utils";
 
 export default function HomePage() {
     return (
@@ -77,7 +79,7 @@ export default function HomePage() {
                 <h2 className="text-4xl text-center text-balance font-semibold mb-8">
                     Pricing software which pays for itself 20x over
                 </h2>
-                <div className="grid grid-cols-2 lg:grid-col-4 gap-4 max-w-screen-xl mx-auto">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl mx-auto">
                     {subscriptionTiersInOrder.map(tier => (
                         <PricingCard key={tier.name} {...tier} />
                     ))}
@@ -98,17 +100,65 @@ function PricingCard({
                          canCustomizeBanner,
                          canRemoveBranding
                      }: typeof subscriptionTiersInOrder[number]) {
+    const isMostPopular = name === "Standard"
     // Add cards for each subscription tier
-    return <Card>
-        <CardHeader>
-            <div className="text-accent font-semibold mb-8">
-                {name}
-            </div>
-            <CardTitle className="text-xl font-bold">${priceInCents / 100} /mo</CardTitle>
-            <CardDescription>
-                {formatCompactNumber(maxNumberOfVisits)} pricing page visits/mo
-            </CardDescription>
+    return (
 
-        </CardHeader>
-    </Card>
+        <Card>
+            {/*Card header*/}
+            <CardHeader>
+                <div className="text-accent font-semibold mb-8">
+                    {name}
+                </div>
+                <CardTitle className="text-xl font-bold">${priceInCents / 100} /mo</CardTitle>
+                <CardDescription>
+                    {formatCompactNumber(maxNumberOfVisits)} pricing page visits/mo
+                </CardDescription>
+            </CardHeader>
+            {/*End of card header*/}
+
+            {/*Signup button*/}
+            <CardContent>
+                <SignUpButton>
+                    <Button className="text-lg w-full rounded-lg" variant={isMostPopular ? "accent" : "default"}>
+                        Get Started
+                    </Button>
+                </SignUpButton>
+            </CardContent>
+            {/*End of signup button*/}
+
+            {/*Card footer and features*/}
+            <CardFooter className="flex flex-col gap-4 items-start">
+                {/*// Check if there is 1 or more products*/}
+                <Feature className="font-bold">{maxNumberOfProducts}{" "}{maxNumberOfProducts === 1 ? " product" : "products"}</Feature>
+                {/*// Check for Discounts on PPP*/}
+                <Feature>PPP Discounts</Feature>
+                {/*Check for removing branding*/}
+                {canRemoveBranding && <Feature>Remove East PPP branding</Feature>}
+                {/*// Check for advanced analytics*/}
+                {canAccessAnalytics && <Feature>Advanced analytics</Feature>}
+                {/*// Check for banner customization*/}
+                {canCustomizeBanner && <Feature>Banner customization</Feature>}
+
+
+            </CardFooter>
+            {/*End of card footer and features*/}
+
+        </Card>
+    )
+}
+
+// Check Icon
+function Feature({
+                     children,
+                     className,
+                 }: {
+    children: ReactNode,
+    className?: string
+}) {
+    return (<div className={cn("flex items-center gap-2", className)}>
+            <CheckIcon className="size-4 stroke=accent bg-accent/25 rounded-full p-0.5"/>
+            <span>{children}</span>
+        </div>
+    )
 }
