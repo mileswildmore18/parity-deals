@@ -113,6 +113,53 @@ export default function HomePage() {
                             ]}
                         />
                     </div>
+                    <div className="flex flex-col gap-8">
+                        <FooterLinkGroup
+                            title="Features"
+                            links={[
+                                {label: "PPP Discounts", href: "#"},
+                            ]}
+                        />
+                        <FooterLinkGroup
+                            title="Tools"
+                            links={[
+                                {label: "Salary Converter", href: "#"},
+                                {label: "Coupon Generator", href: "#"},
+                                {label: "Stripe App", href: "#"},
+                            ]}
+                        />
+                        <FooterLinkGroup
+                            title="Company"
+                            links={[
+                                {label: "Affiliate", href: "#"},
+                                {label: "Twitter", href: "#"},
+                                {label: "Terms of Service", href: "#"},
+                            ]}
+                        />
+                    </div>
+                    <div className="flex flex-col gap-8">
+                        <FooterLinkGroup
+                            title="Integrations"
+                            links={[
+                                {label: "Lemon Squeezy", href: "#"},
+                                {label: "Gumroad", href: "#"},
+                                {label: "Stripe", href: "#"},
+                                {label: "Chargebee", href: "#"},
+                                {label: "Paddle", href: "#"},
+                            ]}
+                        />
+                        <FooterLinkGroup
+                            title="Tutorials"
+                            links={[
+                                {label: "Any Website", href: "#"},
+                                {label: "Lemon Squeezy", href: "#"},
+                                {label: "Gumroad", href: "#"},
+                                {label: "Stripe", href: "#"},
+                                {label: "Chargebee", href: "#"},
+                                {label: "Paddle", href: "#"},
+                            ]}
+                        />
+                    </div>
 
                 </div>
                 {/*End of footer links*/}
