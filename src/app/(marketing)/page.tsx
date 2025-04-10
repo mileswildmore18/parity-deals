@@ -9,6 +9,7 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} f
 import {formatCompactNumber} from "@/lib/formatters";
 import {ReactNode} from "react";
 import {cn} from "@/lib/utils";
+import {BrandLogo} from "@/components/BrandLogo";
 
 export default function HomePage() {
     return (
@@ -86,6 +87,37 @@ export default function HomePage() {
                 </div>
             </section>
             {/*End of pricing section*/}
+
+            {/*Footer*/}
+            <footer
+                className="container pt-16 pb-8 flex flex-col sm:flex-row gap-8 sm:gap-4 justify-between items-start">
+                <Link href="/">
+                    <BrandLogo/>
+                </Link>
+                {/*Footer links*/}
+                <div className="flex flex-col sm:flex-row gap-8">
+                    <div className="flex flex-col gap-8">
+                        <FooterLinkGroup
+                            title="Help"
+                            links={[
+                                {label: "PPP Discounts", href: "#"},
+                                {label: "Discount API", href: "#"},
+                            ]}
+                        />
+                        <FooterLinkGroup
+                            title="Solutions"
+                            links={[
+                                {label: "Newsletter", href: "#"},
+                                {label: "SaaS Business", href: "#"},
+                                {label: "Online Courses", href: "#"},
+                            ]}
+                        />
+                    </div>
+
+                </div>
+                {/*End of footer links*/}
+            </footer>
+            {/*End of footer*/}
         </>
     )
 }
@@ -130,7 +162,8 @@ function PricingCard({
             {/*Card footer and features*/}
             <CardFooter className="flex flex-col gap-4 items-start">
                 {/*// Check if there is 1 or more products*/}
-                <Feature className="font-bold">{maxNumberOfProducts}{" "}{maxNumberOfProducts === 1 ? " product" : "products"}</Feature>
+                <Feature
+                    className="font-bold">{maxNumberOfProducts}{" "}{maxNumberOfProducts === 1 ? " product" : "products"}</Feature>
                 {/*// Check for Discounts on PPP*/}
                 <Feature>PPP Discounts</Feature>
                 {/*Check for removing branding*/}
@@ -159,6 +192,16 @@ function Feature({
     return (<div className={cn("flex items-center gap-2", className)}>
             <CheckIcon className="size-4 stroke=accent bg-accent/25 rounded-full p-0.5"/>
             <span>{children}</span>
+        </div>
+    )
+}
+
+function FooterLinkGroup({title, links}: { title: string, links: { label: string, href: string }[] }) {
+    return (<div className="flex flex-col gap-4">
+            <h3 className="font-semibold">{title}</h3>
+            <ul className="flex flex-col gap-2 text-sm">{links.map(link => (
+                <li key={link.href}><Link href={link.href}>{link.label}</Link></li>))}</ul>
+
         </div>
     )
 }
